@@ -127,7 +127,7 @@ func runTest(testSource string, args []string) (string, error) {
 
 	// Check if the binary exists, compile it if not
 	if _, err := os.Stat(binaryName); os.IsNotExist(err) {
-		cmd := exec.Command("gcc", "-o", binaryName, testSource)
+		cmd := exec.Command("gcc", "-o", binaryName, testSource, "-L.", "-lft", "-I.")
 		output, err := cmd.CombinedOutput()
 		if err != nil {
 			return string(output), fmt.Errorf("failed to compile %s: %v", binaryName, err)
@@ -161,5 +161,5 @@ func cleanup() error {
 func assertContains(actual, expected string) bool {
 	actual = strings.TrimSpace(actual)
 	expected = strings.TrimSpace(expected)
-	return strings.Contains(actual, expected)
+	return actual == expected
 }

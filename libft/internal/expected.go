@@ -18,11 +18,11 @@ var ExpectedRes = map[string][]string{
 		"len: 500", // Large string
 	},
 	"test_ft_strncmp.c": {
-		"cmp: 0",  // Same string
-		"cmp: 1",  // First string is greater
-		"cmp: -1", // First string is smaller
-		"cmp: 0",  // Same string, shorter length
-		"cmp: 0",  // Empty strings
+		"strncmp: 0", // Same string
+		"strncmp: 1", // First string is greater
+		"strncmp: 0", // compare only first 3 chars
+		"strncmp: 0", // Empty strings
+		"strncmp: 1", // Case-sensitive comparison
 	},
 	"test_ft_atoi.c": {
 		"num: 42",          // Positive number
@@ -38,19 +38,19 @@ var ExpectedRes = map[string][]string{
 		"alpha: 0", // Space character
 		"alpha: 0", // Special character (?)
 	},
+	"test_ft_isalnum.c": {
+		"alnum: 1", // Alphabet (A)
+		"alnum: 1", // Lowercase letter (z)
+		"alnum: 1", // Digit (9)
+		"alnum: 0", // Space
+		"alnum: 0", // Special character (?)
+	},
 	"test_ft_isdigit.c": {
 		"digit: 1", // '0' is a digit
 		"digit: 1", // '5' is a digit
 		"digit: 1", // '9' is a digit
 		"digit: 0", // 'a' is not a digit
 		"digit: 0", // Space is not a digit
-	},
-	"test_ft_isalnum.c": {
-		"alnum: 1", // Alphabet
-		"alnum: 1", // Lowercase letter
-		"alnum: 1", // Digit
-		"alnum: 0", // Space
-		"alnum: 0", // Special character
 	},
 	"test_ft_calloc.c": {
 		"alloc: [0, 0, 0, 0, 0]", // Allocate 5 blocks of 4 bytes (all zeros)
